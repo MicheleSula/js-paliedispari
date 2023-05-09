@@ -10,34 +10,56 @@
 </head>
 <body>
     <main>
-        <h1>PALIEDISPARI</h1>
+        <h1>PALI&DISPARI</h1>
+
+        <!-- Left section -->
         <section id="section-left">
             <div id="card-container">
                 <div class="btn-container">
                     <button id="palindromo-button" class="btn-blue">Check palindromo</button>
                 </div>
                 <div>
-                    <h2>E-mail:</h2>
+                    <h2>Input</h2>
     
-                    <input type="email" id="input" name="email" required minlength="4" maxlength="20" size="30">
+                    <input type="text" id="input" required minlength="4" maxlength="20" size="30">
                 </div>
                 <h3 id="result"></h3>
             </div>
         </section>
+
+        <!-- Middle section orange -->
         <div id="fill-color"></div>
+
+        <!-- Right section -->
         <section id="section-right">
             <div id="card-container">
-                <div class="btn-container">
-                    <button id="dice-button" class="btn-green">Tira i dadi</button>
-                </div>
                 <div id="dice-container">
                     <div id="player-1">
-                        <h2>Giocatore 1:</h2>
-                        <div id="dice-1"></div>
-                    </div>
-                    <div id="player-2">
-                        <h2>Giocatore 2:</h2>
-                        <div id="dice-2"></div>
+
+                        <!-- Upper part with select even or odd -->
+                        <div id="upper">
+                            <h2>Scegli pari o dispari:</h2>
+                            <select id="user-choice" class="btn-yellow">
+                                <option value="odd">Dispari</option>
+                                <option value="even">Pari</option>
+                            </select>
+                        </div>
+
+                        <!-- Bottom part with number to insert and result -->
+                        <div id="bottom">
+                            <h2>Inserisci un numero da 1 a 5:</h2>
+                            <input id="user-number">
+                            <div>
+                                <button id="dice-button" class="btn-green" onclick="playGame()">Gioca</button>
+                            </div>
+
+                            <div id="number-display">
+                                <h2 id="player-number-display"></h2>
+                                <h2 id="computer-number-display"></h2>
+                            </div>
+                            <h2 id="game-result"></h2>
+                            <h2 id="error-message" class="red-text"></h2>
+                        </div>
                     </div>
                 </div>
                 

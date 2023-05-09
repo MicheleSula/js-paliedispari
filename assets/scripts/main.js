@@ -1,15 +1,6 @@
-// Palidroma
-// Chiedere all’utente di inserire una parola
-// Creare una funzione per capire se la parola inserita è palindroma
-// Pari e Dispari
-// L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
-// Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
-// Sommiamo i due numeri Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione) Dichiariamo chi ha vinto.
-
+// Primo esercizio ****************************************************************************
 const checkPalindromoButton = document.getElementById("palindromo-button");
 const resultPalindromo = document.getElementById("result");
-
-
 
 
 checkPalindromoButton.addEventListener("click", 
@@ -34,11 +25,6 @@ checkPalindromoButton.addEventListener("click",
 
 
 
-
-
-
-
-
 // Funzioni
 function palindromoCheck (input) {
     // prendo l'input e lo rendo una stringa lower-case con solo simboli alfanumerici (a-z/0-9)
@@ -51,5 +37,62 @@ function palindromoCheck (input) {
         return true;
     } else {
         return false;
+    }
+}
+
+
+// Secondo esercizio ************************************************************************
+
+// Rng for computer
+function generateComputerNumber() {
+    return Math.floor(Math.random() * 5) + 1;
+}
+
+// Determine if the sum is odd or even using a function
+function isOddOrEven(num) {
+    if (num % 2 === 0) {
+        return "even";
+    } else {
+        return "odd";
+    }
+}
+
+// Odd/even game
+function playGame() {
+
+    // Userchoice value
+    let userChoice = document.querySelector("#user-choice").value;
+
+    // User number
+    let userNumber = parseInt(document.querySelector("#user-number").value);
+    
+
+    // Validate the user's input between 1 and 5
+    if (userNumber < 1 || userNumber > 5) {
+        // Error message
+        document.querySelector("#error-message").textContent = "Please enter a number between 1 and 5.";
+        document.querySelector("#error-message").value = "";
+        return;
+    } else {
+        // Clear the error message
+        document.querySelector("#error-message").textContent = "";
+        document.getElementById("player-number-display").innerHTML = "Giocatore <br>" + userNumber;
+    }
+
+    // RNG from 1 to 5 + display of it
+    let computerNumber = generateComputerNumber();
+    document.getElementById("computer-number-display").innerHTML = "Computer <br>" + computerNumber;
+
+    // Sum of numbers
+    let sum = userNumber + computerNumber;
+
+    // Determine if sum is odd or even
+    let result = isOddOrEven(sum);
+
+    // Winning conditions
+    if (result === userChoice) {
+        document.getElementById("game-result").innerHTML = sum + " : pari" + "<br>Vince il giocatore!";
+    } else {
+        document.getElementById("game-result").innerHTML = sum + " : dispari" + "<br>Vince il computer!";
     }
 }
